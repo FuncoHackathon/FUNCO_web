@@ -1,0 +1,19 @@
+.temp {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(
+      102.43deg,
+      rgba(0, 227, 214, 0.05) 0%,
+      rgba(197, 240, 238, 0.05) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 183, 73, 0.05) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    #ffffff;
+}
