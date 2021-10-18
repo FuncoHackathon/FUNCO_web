@@ -1,0 +1,82 @@
+/* img */
+.logo {
+  width: 180px;
+  position: absolute;
+  left: calc(50% - 90px);
+  top: calc(16% - 90px);
+}
+
+/* form */
+.maxSize {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 100px;
+}
+.userIDPW {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
+}
+.label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 20px;
+}
+.userInfo {
+  margin-left: 16px;
+  margin-bottom: 40px;
+  width: 420px;
+  background: none;
+  font-size: 24px;
+  border: none;
+  border-bottom: 3px solid #a1a1a1;
+  outline: none;
+
+  &:focus {
+    margin-bottom: 40px;
+    border: none;
+    border-bottom: 3px solid #00b0e8;
+    outline: none;
+  }
+}
+.loginBt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 560px;
+  height: 80px;
+  font-family: "Noto Sans KR";
+  font-size: 27px;
+  margin-top: 15px;
+  border: none;
+  background: linear-gradient(90deg, #77dd00 0%, #008710 100%);
+  border-radius: 44px;
+  color: white;
+  font-weight: 700;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
+.noaccount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  font-size: 20px;
+  bottom: 0;
+}
+.noaccount_write {
+  padding-right: 15px;
+}
+.inputFrame {
+  margin: 0 0 30px 10px;
+  font-size: 23px;
+  font-weight: 600;
+  padding-bottom: 8px;
+}
