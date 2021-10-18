@@ -11,8 +11,19 @@ const initialState = [
   },
 ];
 
+export const SIGNUP = "SIGN_UP";
+
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SIGNUP:
+      return [
+        ...state,
+        {
+          email: action.email,
+          password: action.password,
+          userName: action.name,
+        },
+      ];
     default:
       return state;
   }

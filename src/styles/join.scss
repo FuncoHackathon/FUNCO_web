@@ -80,3 +80,24 @@
   font-weight: 600;
   padding-bottom: 8px;
 }
+.commonBut {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: #04b558;
+  border: none;
+  width: 70px;
+  height: 30px;
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  border-radius: 40px;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
