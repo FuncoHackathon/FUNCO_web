@@ -1,0 +1,74 @@
+// input
+.title0 {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border-bottom: 0.5px solid #e8e8e8;
+  margin-bottom: 3px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.title1 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  width: 75%;
+  justify-content: space-around;
+  align-items: center;
+}
+.searchIcon {
+  width: 30px;
+  height: 30px;
+  color: white;
+}
+.searchInput {
+  height: 35px;
+  font-size: 20px;
+  border: none;
+  width: 400px;
+  background: none;
+  padding: 10px;
+  padding-left: 20px;
+  color: #fff;
+  outline: none;
+  &::-webkit-input-placeholder {
+    color: white;
+  }
+}
+.inputLabel {
+  background: linear-gradient(
+      90deg,
+      rgba(4, 181, 88, 0.3) 0%,
+      rgba(119, 221, 0, 0) 100%
+    ),
+    rgba(204, 204, 204, 0.4);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+}
+.sea {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  margin-right: 10px;
+  background: #cccccc;
+  color: white;
+  border-radius: 50%;
+}
+.FUNCO {
+  color: #04b558;
+  font-weight: 900;
+  font-size: 50px;
+  font-family: "Cafe24" Ssurround;
+}
+.profile {
+  color: #8f8f8f;
+  font-weight: 400;
+}

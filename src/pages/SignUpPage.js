@@ -1,13 +1,13 @@
-import React from "react";
+import React, { memo } from "react";
 import SignForm from "../components/SignForm";
 import Temp from "../pages/Temp";
 
-const SignUp = () => {
+const SignUp = memo(() => {
   return (
     <Temp>
       <SignForm />
     </Temp>
   );
-};
+});
 
 export default SignUp;

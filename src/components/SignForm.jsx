@@ -2,11 +2,11 @@ import React, { memo, useCallback, useEffect, useState } from "react";
 import "../styles/join.scss";
 import "../styles/common.scss";
 import logo from "../img/logo.png";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SIGNUP } from "../store/userReducer";
 
-const SignForm = memo(() => {
+const SignForm = withRouter(({ history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -55,6 +55,7 @@ const SignForm = memo(() => {
       e.preventDefault();
       if (emailCheck) {
         dispatch({ type: SIGNUP, name, password, email });
+        history.push("/");
       }
     },
     [email, password, name, password2, check, emailCheck]
@@ -146,5 +147,4 @@ const SignForm = memo(() => {
     </>
   );
 });
-
 export default SignForm;

@@ -4,6 +4,7 @@ const initialState = {
 };
 
 export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";
 
 const rootreducer = (state = initialState, action) => {
   switch (action.type) {
@@ -12,6 +13,12 @@ const rootreducer = (state = initialState, action) => {
         ...state,
         isLog: true,
         userName: action.name,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        isLog: false,
+        userName: null,
       };
     default:
       return state;

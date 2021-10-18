@@ -29,7 +29,9 @@ const LoginForm = memo(() => {
       e.preventDefault();
       const find = member.find((v) => email === v.email);
       if (find) {
-        dispatch({ type: LOGIN, name: find.userName });
+        if (find.password === password) {
+          dispatch({ type: LOGIN, name: find.userName });
+        }
       }
       setPassword("");
       setEmail("");
