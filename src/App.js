@@ -4,6 +4,7 @@ import { BrowserRouter, Route, withRouter } from "react-router-dom";
 import MyFunding from "./components/MyFunding";
 import Ranking from "./components/Ranking";
 import SomeFunding from "./components/SomeFunding";
+import AddPage from "./pages/AddPage";
 import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -30,6 +31,7 @@ const App = withRouter(({ history }) => {
           <Route path="/ranking" exact component={MainPage} />
           <Route path="/myfunding" exact component={MainPage} />
           <Route path="/id/:id" exact component={MainPage} />
+          <Route path="/add" component={AddPage} />
         </BrowserRouter>
       )}
     </>

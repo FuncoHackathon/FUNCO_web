@@ -1,0 +1,20 @@
+.basicInfo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 104px;
+  background: linear-gradient(
+      0deg,
+      rgba(146, 146, 146, 0.1),
+      rgba(146, 146, 146, 0.1)
+    ),
+    rgba(232, 232, 232, 0.3);
+}
+.basic {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  height: 100%;
+}
