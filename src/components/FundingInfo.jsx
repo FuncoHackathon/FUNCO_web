@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Fund from "./Fund";
 import "../styles/fundingInfo.scss";
 import ImageChange from "./ImageChange";
+import { Link } from "react-router-dom";
 
 const FundingInfo = () => {
   const fund = useSelector((state) => state.fundingReducer);

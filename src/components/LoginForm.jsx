@@ -1,12 +1,12 @@
 import React, { memo, useCallback, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import logo from "../img/logo.png";
 import "../styles/join.scss";
 import "../styles/common.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { LOGIN } from "../store/reducer";
 
-const LoginForm = memo(() => {
+const LoginForm = withRouter(({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const member = useSelector((state) => state.userReducer);
@@ -31,6 +31,7 @@ const LoginForm = memo(() => {
       if (find) {
         if (find.password === password) {
           dispatch({ type: LOGIN, name: find.userName });
+          history.push("/");
         }
       }
       setPassword("");
@@ -76,5 +77,4 @@ const LoginForm = memo(() => {
     </>
   );
 });
-
 export default LoginForm;

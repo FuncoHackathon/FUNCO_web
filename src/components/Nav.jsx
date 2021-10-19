@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import nav from "../styles/nav.scss";
 
 const Nav = () => {
@@ -9,6 +9,7 @@ const Nav = () => {
         <NavLink
           activeStyle={{ backgroundColor: "#00E26B", fontWeight: "700" }}
           className="nav"
+          exact
           to="/ranking"
         >
           랭킹
@@ -24,7 +25,8 @@ const Nav = () => {
         <NavLink
           activeStyle={{ backgroundColor: "#00E26B", fontWeight: "700" }}
           className="nav"
-          to="myfunding"
+          exact
+          to="/myfunding"
         >
           내 펀딩
         </NavLink>
