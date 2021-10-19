@@ -1,7 +1,7 @@
 import React from "react";
 
 const Ranking = () => {
-  return <div>RankingPage</div>;
+  return <div>Ranking</div>;
 };
 
 export default Ranking;

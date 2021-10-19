@@ -1,0 +1,48 @@
+.infoFra {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: scroll;
+}
+.infoFrame {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow: scroll;
+  flex-direction: row;
+}
+.infoFrame2 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: scroll;
+  flex-direction: column;
+}
+.fundSize {
+  width: 20%;
+  margin: 17px;
+}
+.fundImage {
+  width: 100%;
+  height: 60%;
+  border-radius: 7px;
+}
+.fundH1 {
+  font-family: "Noto Sans KR";
+  font-weight: 400;
+  font-size: 19px;
+  padding: 2px;
+  padding-top: 0;
+  margin: 3px;
+}
+.fundP {
+  font-size: 18px;
+  margin-top: 5px;
+  padding: 4px;
+  font-weight: 700;
+  color: red;
+}
