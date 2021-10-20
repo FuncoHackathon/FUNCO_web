@@ -11,6 +11,7 @@ const Title = withRouter(({ history }) => {
   const dispatch = useDispatch();
 
   const LogOut = () => {
+    localStorage.removeItem("jwtToken");
     dispatch({ type: LOGOUT });
     history.push("/");
   };

@@ -5,8 +5,12 @@ import "../styles/join.scss";
 import "../styles/common.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { LOGIN } from "../store/reducer";
+import axios from "axios";
+import apiconfig from "../config/apiconfig";
+import { useAlert } from "react-alert";
 
 const LoginForm = withRouter(({ history }) => {
+  const alert = useAlert();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const member = useSelector((state) => state.userReducer);
@@ -24,21 +28,31 @@ const LoginForm = withRouter(({ history }) => {
     },
     [password]
   );
-  const onClickLogin = useCallback(
-    (e) => {
-      e.preventDefault();
-      const find = member.find((v) => email === v.email);
-      if (find) {
-        if (find.password === password) {
-          dispatch({ type: LOGIN, name: find.userName });
-          history.push("/");
-        }
-      }
-      setPassword("");
+  const onClickLogin = async (e) => {
+    e.preventDefault();
+    try {
+      console.log("sdlf");
+      const res = await axios.post(`${apiconfig.API_ENDPOINT}/users/login`, {
+        email,
+        password,
+      });
       setEmail("");
-    },
-    [email, password]
-  );
+      setPassword("");
+      alert.show(res.data.message);
+      localStorage.setItem("jwtToken", res.data.token);
+      const res2 = await axios.get(`${apiconfig.API_ENDPOINT}/users/name`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+        },
+      });
+      dispatch({ type: LOGIN, name: res2.data.name });
+    } catch (e) {
+      alert.show(e.response.data.message, {
+        timeout: 2000,
+        type: "error",
+      });
+    }
+  };
 
   return (
     <>

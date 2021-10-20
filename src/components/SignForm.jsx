@@ -5,8 +5,14 @@ import logo from "../img/logo.png";
 import { Link, withRouter } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SIGNUP } from "../store/userReducer";
+import axios from "axios";
+import apiconfig from "../config/apiconfig";
+import { types, useAlert } from "react-alert";
 
 const SignForm = withRouter(({ history }) => {
+  const alert = useAlert();
+  useEffect(() => {});
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -50,23 +56,48 @@ const SignForm = withRouter(({ history }) => {
     },
     [password2]
   );
-  const onClickSignUp = useCallback(
-    (e) => {
-      e.preventDefault();
-      if (emailCheck) {
-        dispatch({ type: SIGNUP, name, password, email });
+  const onClickSignUp = (e) => {
+    e.preventDefault();
+    axios
+      .post(`${apiconfig.API_ENDPOINT}/users/join`, {
+        email,
+        password,
+        password2,
+        name,
+      })
+      .then((res) => {
+        const { message } = res.data;
+        alert.show(message);
         history.push("/");
-      }
-    },
-    [email, password, name, password2, check, emailCheck]
-  );
-  const onClickEmailCom = () => {
-    const find = user.find((v) => v.email === email);
-    if (!find) {
-      setEmailCheck(true);
-    } else {
-      setEmailCheck(false);
+      });
+  };
+
+  const onClickEmailCom = async () => {
+    console.log("sdfsdjf");
+    try {
+      const res = await axios.get(
+        `${apiconfig.API_ENDPOINT}/users/email/${email}`
+      );
+      const { message } = res.data;
+      alert.show(message);
+    } catch (e) {
+      const { data } = e.response;
+      alert.show(data.message, {
+        timeout: 2000,
+        type: "error",
+      });
     }
+    // .then((res) => {
+    //   const { message } = res;
+    //   console.log(res);
+    // });
+
+    // const find = user.find((v) => v.email === email);
+    // if (!find) {
+    //   setEmailCheck(true);
+    // } else {
+    //   setEmailCheck(false);
+    // }
   };
 
   return (
@@ -89,13 +120,6 @@ const SignForm = withRouter(({ history }) => {
             <input
               type="email"
               className="userInfo"
-              style={
-                emailCheck === undefined
-                  ? { background: "none" }
-                  : !emailCheck
-                  ? { background: "red" }
-                  : { backgroundColor: "#04B558" }
-              }
               value={email}
               onChange={onChangeEmail}
               required
@@ -112,6 +136,7 @@ const SignForm = withRouter(({ history }) => {
               type="password"
               className="userInfo"
               value={password}
+              placeholder="6자리에서 15자리"
               onChange={onChangePassword}
               required
             />

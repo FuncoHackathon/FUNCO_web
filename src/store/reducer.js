@@ -14,12 +14,13 @@ const rootreducer = (state = initialState, action) => {
         isLog: true,
         userName: action.name,
       };
-    case LOGOUT:
+    case LOGOUT: {
       return {
         ...state,
         isLog: false,
         userName: null,
       };
+    }
     default:
       return state;
   }
