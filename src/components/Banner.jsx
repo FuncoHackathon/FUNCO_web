@@ -5,12 +5,14 @@ import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
 import I1 from "../img/1.png";
+import I2 from "../img/2.png";
+import I3 from "../img/3.png";
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 function Banner() {
   return (
-    <div style={{ width: "100%" }}>
+    <div style={{ width: "100%", textAlign: "center" }}>
       <Swiper
         className="banner"
         spaceBetween={50}
@@ -25,14 +27,14 @@ function Banner() {
           <img src={I1} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={I1} />
+          <img src={I2} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={I1} />
+          <img src={I3} />
         </SwiperSlide>
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <img src={I1} />
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </div>
   );
