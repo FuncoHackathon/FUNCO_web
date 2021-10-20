@@ -60,7 +60,16 @@ const WriteForm = withRouter(({ history }) => {
   }, [year, month, day]);
 
   const dateCur = () => {
-    if (year !== "" && month !== "" && day !== "") {
+    if (
+      year !== "" &&
+      month !== "" &&
+      day !== "" &&
+      parseInt(year) >= 2021 &&
+      parseInt(month) > 0 &&
+      parseInt(month) < 13 &&
+      parseInt(day) > 0 &&
+      parseInt(day) < 32
+    ) {
       let da = Date.parse(`${year}-${month}-${day}`) - Date.now();
 
       const y = parseInt(da / (1000 * 60 * 60 * 24));
@@ -72,20 +81,16 @@ const WriteForm = withRouter(({ history }) => {
       const m = parseInt(da / (1000 * 60));
       da = da % (1000 * 60);
 
-      if (y === NaN || h === NaN || m === NaN || da === NaN) {
-        setDada("");
-        return;
-      }
-
       setDada(`${y}일 ${h}시간 ${m}분`);
     } else {
+      setDada("");
       return;
     }
   };
 
-  const Back = () => {
+  const Back = useCallback(() => {
     history.push("/");
-  };
+  }, []);
 
   return (
     <div className="wfra">
