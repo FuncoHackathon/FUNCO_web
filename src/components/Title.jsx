@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
 import search from "../img/search.png";
 import { LOGOUT } from "../store/reducer";
 import "../styles/Title.scss";

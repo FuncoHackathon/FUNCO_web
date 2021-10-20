@@ -5,7 +5,7 @@ import "../styles/fundingInfo.scss";
 const Fund = ({ fund }) => {
   return (
     <Link
-      to={`/id/${fund.id}`}
+      to={`/some/${fund.id}`}
       className="fundSize"
       style={{ textDecoration: "none", color: "black" }}
     >

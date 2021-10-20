@@ -30,8 +30,8 @@ const App = withRouter(({ history }) => {
           <Route path="/" exact component={MainPage} />
           <Route path="/ranking" exact component={MainPage} />
           <Route path="/myfunding" exact component={MainPage} />
-          <Route path="/id/:id" exact component={MainPage} />
-          <Route path="/add" component={AddPage} />
+          <Route path="/add" exact component={AddPage} />
+          <Route path="/some/:id" component={MainPage} />
         </BrowserRouter>
       )}
     </>

@@ -5,6 +5,7 @@
 }
 .wriFra {
   width: 60%;
+  margin-bottom: 100px;
   //   border: 1px solid black;
 }
 .fff {
@@ -27,4 +28,93 @@
 }
 .wriSpan {
   margin-left: 15px;
+}
+.wriInputDiv {
+  width: 90%;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+}
+.WWW {
+  height: 80%;
+  margin-right: 30px;
+  & input {
+    outline: none;
+    font-size: 16px;
+    text-align: right;
+    height: 95%;
+    width: 150px;
+  }
+}
+.filebox .upload-name {
+  display: inline-block;
+  height: 300px;
+  width: 300px;
+  padding: 0 10px;
+  vertical-align: bottom;
+  border: 1px solid #dddddd;
+  text-align: center;
+  outline: none;
+  color: #999999;
+}
+.filebox label {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  vertical-align: middle;
+  background-color: #999999;
+  cursor: pointer;
+  height: 30px;
+  margin-left: 10px;
+}
+.filebox input[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
+.writeTextarea {
+  width: 700px;
+  height: 400px;
+  outline: none;
+  padding: 10px;
+  box-sizing: border-box;
+  resize: none;
+  font-size: 16px;
+  color: #707070;
+}
+.submitBut {
+  width: 200px;
+  height: 60px;
+  border-radius: 30px;
+  border: none;
+  background-color: #00c55d;
+  font-size: 20px;
+  color: white;
+  margin-right: 12px;
+  font-weight: 700;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+.submitButBack {
+  margin-top: 20px;
+  width: 200px;
+  height: 60px;
+  border-radius: 30px;
+  border: none;
+  background-color: #b0b0b0;
+  font-size: 20px;
+  color: white;
+  font-weight: 700;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
 }

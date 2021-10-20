@@ -18,7 +18,7 @@ const MainPage = withRouter(({ match }) => {
         <Route path="/" exact component={FundingInfo} />
         <Route path="/ranking" exact component={Ranking} />
         <Route path="/myfunding" exact component={MyFunding} />
-        <Route path="/id/:id" component={SomeFunding} />
+        <Route path="/some/:id" component={SomeFunding} />
       </BrowserRouter>
       <Link to="/add">
         <div className="AddBut">+</div>
