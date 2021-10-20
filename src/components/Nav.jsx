@@ -12,7 +12,7 @@ const Nav = () => {
           exact
           to="/ranking"
         >
-          랭킹
+          펀딩 랭킹
         </NavLink>
         <NavLink
           exact
