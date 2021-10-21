@@ -1,8 +1,13 @@
+import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
+import { useAlert } from "react-alert";
 import { withRouter } from "react-router";
+import apiconfig from "../config/apiconfig";
 import "../styles/write.scss";
 
 const WriteForm = withRouter(({ history }) => {
+  const alert = useAlert();
+
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [year, setYear] = useState("");
@@ -11,6 +16,69 @@ const WriteForm = withRouter(({ history }) => {
   const [imgurl, setImgurl] = useState("");
   const [story, setStory] = useState("");
   const [dada, setDada] = useState("");
+  const [img, setImg] = useState();
+  const [tags, setTags] = useState([]);
+  const [writeTag, setWriteTag] = useState("");
+
+  const onChangeTags = (e) => {
+    setWriteTag(e.target.value);
+  };
+
+  const onKeyPressTags = (e) => {
+    if (e.charCode === 13) {
+      if (tags.length < 5) {
+        setTags([...tags, writeTag]);
+        setWriteTag("");
+      } else {
+        return;
+      }
+    }
+  };
+
+  const onsubmitAdd = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        `${apiconfig.API_ENDPOINT}/fundings/upload`,
+        {
+          title,
+          goal: price,
+          closingYear: year,
+          closingMonth: month,
+          closingDay: day,
+          img,
+          story,
+          tags,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+          },
+        }
+      )
+      .then((res) => {
+        alert.show(res.data.message, {
+          timeout: 2000,
+          position: "bottom right",
+          containerStyle: {
+            marginTop: "100px",
+            zIndex: 100,
+          },
+        });
+        history.push("/");
+      })
+      .catch((e) => {
+        alert.show(e.response.data.message, {
+          timeout: 2000,
+          type: "error",
+          position: "bottom right",
+          containerStyle: {
+            marginTop: "100px",
+            zIndex: 100,
+          },
+        });
+      });
+  };
 
   const onChangeTitle = useCallback(
     (e) => {
@@ -42,12 +110,37 @@ const WriteForm = withRouter(({ history }) => {
     },
     [day]
   );
-  const onChangeImgurl = useCallback(
-    (e) => {
-      setImgurl(e.target.value);
-    },
-    [imgurl]
-  );
+  const onChangeImgurl = async (e) => {
+    await setImgurl(e.target.value);
+    const formData = new FormData();
+    formData.append("img", e.target.files[0]);
+    axios
+      .post(`${apiconfig.API_ENDPOINT}/fundings/upload/img`, formData, {
+        header: { "content-type": "multipart/form-data" },
+      })
+      .then((res) => {
+        const i = res.data.img;
+        setImg(i);
+        // setImgurl(i);
+      })
+      .catch((e) => {
+        alert.show("sdef", {
+          type: "error",
+        });
+      });
+  };
+  // useEffect(() => {
+  //   const formData = new FormData();
+  //   formData.append("img", imgurl[0]);
+  //   axios
+  //     .post(`${apiconfig.API_ENDPOINT}/fundings/upload/img`, formData, {
+  //       header: { "content-type": "multipart/form-data" },
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //     });
+  // }, [imgurl]);
+
   const onChangeStory = useCallback(
     (e) => {
       setStory(e.target.value);
@@ -75,7 +168,7 @@ const WriteForm = withRouter(({ history }) => {
       const y = parseInt(da / (1000 * 60 * 60 * 24));
       da = da % (1000 * 60 * 60 * 24);
 
-      const h = parseInt(da / (1000 * 60 * 60)) - 9;
+      const h = parseInt(da / (1000 * 60 * 60));
       da = da % (1000 * 60 * 60);
 
       const m = parseInt(da / (1000 * 60));
@@ -117,6 +210,30 @@ const WriteForm = withRouter(({ history }) => {
             className="wriInput"
           />
           <span className="wriSpan">{title.length} / 40</span>
+        </div>
+
+        <div className="fff">
+          <h1 className="wriTitle">태그를 적어주세요</h1>
+          <p className="wriDes">
+            프로젝트의 핵심 내용을 담을 수 있고 간결한 태그를 정해주세요.
+          </p>
+          <input
+            type="text"
+            maxLength={5}
+            onKeyPress={onKeyPressTags}
+            value={writeTag}
+            onChange={onChangeTags}
+            className="wriInput"
+          />
+          <span className="wriSpan">{tags.length} / 5</span>
+          <ul
+            className="wriSpan"
+            style={{ listStyle: "none", padding: "0", display: "flex" }}
+          >
+            {tags.map((v, i) => (
+              <li style={{ paddingRight: "15px", fontSize: "16px" }}># {v}</li>
+            ))}
+          </ul>
         </div>
 
         <div className="fff">
@@ -175,15 +292,17 @@ const WriteForm = withRouter(({ history }) => {
               placeholder="첨부파일"
               readOnly
             />
-            <label for="file" className="fileSearch">
-              파일찾기
-            </label>
-            <input
-              type="file"
-              id="file"
-              value={imgurl}
-              onChange={onChangeImgurl}
-            />
+            <form encType="multipart/form-data">
+              <label for="file" className="fileSearch">
+                파일찾기
+              </label>
+              <input
+                type="file"
+                id="file"
+                value={imgurl}
+                onChange={onChangeImgurl}
+              />
+            </form>
           </div>
         </div>
         <div className="fff">
@@ -197,7 +316,9 @@ const WriteForm = withRouter(({ history }) => {
           ></textarea>
           <span className="wriSpan">{story.length} / 1000</span>
         </div>
-        <button className="submitBut">제출하기</button>
+        <button className="submitBut" onClick={onsubmitAdd}>
+          제출하기
+        </button>
         <button className="submitButBack" onClick={Back}>
           뒤로가기
         </button>

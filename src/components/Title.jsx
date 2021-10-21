@@ -16,10 +16,16 @@ const Title = withRouter(({ history }) => {
     history.push("/");
   };
 
+  const onClickTitle = () => {
+    history.push("/");
+  };
+
   return (
     <div className="title0">
       <div className="title1">
-        <h1 className="FUNCO">FUNCO</h1>
+        <h1 className="FUNCO" onClick={onClickTitle}>
+          FUNCO
+        </h1>
         <label className="inputLabel">
           <input
             type="text"

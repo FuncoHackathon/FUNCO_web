@@ -1,7 +1,8 @@
 import React from "react";
+import apiconfig from "../config/apiconfig";
 import funding from "../img/fundingImage.png";
 
-const Rank = () => {
+const Rank = ({ ra, index }) => {
   return (
     <div
       style={{
@@ -30,10 +31,10 @@ const Rank = () => {
         }}
       >
         <h1 style={{ margin: "0", marginTop: "10px", fontSize: "25px" }}>
-          펀딩 1위
+          랭킹 {index + 1}위
         </h1>
         <p style={{ margin: "0", fontSize: "12px", marginBottom: "10px" }}>
-          칫솔모 교체가 쉬운 친환경 칫솔
+          {ra.title}
         </p>
       </div>
       <div
@@ -46,9 +47,12 @@ const Rank = () => {
           overflow: "hidden",
         }}
       >
-        <img style={{ height: "65%" }} src={funding} />
+        <img
+          style={{ height: "65%" }}
+          src={`${apiconfig.API_ENDPOINT}/uploads/${ra.img}`}
+        />
         <div style={{ width: "100%", textAlign: "left" }}>
-          <p style={{ fontSize: "19px" }}>1,000,000원 펀딩</p>
+          <p style={{ fontSize: "19px" }}>{ra.current}원 펀딩</p>
         </div>
       </div>
     </div>

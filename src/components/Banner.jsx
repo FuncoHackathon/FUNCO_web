@@ -15,7 +15,7 @@ function Banner() {
     <div style={{ width: "100%", textAlign: "center" }}>
       <Swiper
         className="banner"
-        spaceBetween={50}
+        spaceBetween={-2}
         slidesPerView={1}
         navigation
         autoplayDisableOnInteraction={false}

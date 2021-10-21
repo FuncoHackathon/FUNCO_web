@@ -31,7 +31,7 @@ const App = withRouter(({ history }) => {
 
   useEffect(() => {
     if (isLog === false) {
-      history.push("/");
+      // history.push("/");
     }
   }, [isLog]);
 
@@ -48,7 +48,7 @@ const App = withRouter(({ history }) => {
           <Route path="/ranking" exact component={MainPage} />
           <Route path="/myfunding" exact component={MainPage} />
           <Route path="/add" exact component={AddPage} />
-          <Route path="/some/:id" component={MainPage} />
+          <Route path="/some" component={MainPage} />
         </BrowserRouter>
       )}
     </>

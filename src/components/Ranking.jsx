@@ -1,7 +1,17 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import apiconfig from "../config/apiconfig";
 import Rank from "./Rank";
 
 const Ranking = () => {
+  const [rank, setRank] = useState([]);
+  useEffect(() => {
+    axios.get(`${apiconfig.API_ENDPOINT}/fundings/ranking`).then((res) => {
+      setRank(res.data.fundings);
+      // console.log(res);
+    });
+  }, []);
+
   return (
     <div
       style={{
@@ -21,9 +31,9 @@ const Ranking = () => {
           alignItems: "flex-end",
         }}
       >
-        <Rank />
-        <Rank />
-        <Rank />
+        {rank.map((v, i) => (
+          <Rank ra={v} index={i} />
+        ))}
       </div>
     </div>
   );
