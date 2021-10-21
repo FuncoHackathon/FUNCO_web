@@ -69,6 +69,10 @@ const SignForm = withRouter(({ history }) => {
         const { message } = res.data;
         alert.show(message);
         history.push("/");
+      })
+      .catch((e) => {
+        const { message } = e.response.data;
+        alert.show(message);
       });
   };
 
