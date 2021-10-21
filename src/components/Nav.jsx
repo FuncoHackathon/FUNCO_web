@@ -20,7 +20,7 @@ const Nav = () => {
           className="nav"
           to="/"
         >
-          펀딩정보
+          펀딩 정보
         </NavLink>
         <NavLink
           activeStyle={{ backgroundColor: "#00E26B", fontWeight: "700" }}
