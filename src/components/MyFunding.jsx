@@ -40,8 +40,8 @@ const MyFunding = () => {
         },
       })
       .then((res) => {
-        console.log(res);
-        // setFund2(res.data.fundings);
+        // console.log(res.data);
+        setFund2(res.data.fundings);
       })
       .catch((e) => {
         alert.show(e.response.data.message, {
@@ -58,16 +58,16 @@ const MyFunding = () => {
           <h1>내가 만든 펀딩</h1>
         </div>
         <div className="infoFrame">
-          {fund.map((v) => (
-            <Fund fund={v} />
+          {fund.map((v, i) => (
+            <Fund indexx={i} fund={v} />
           ))}
         </div>
         <div style={{ width: "63%", marginTop: "50px" }}>
           <h1>내가 참여한 펀딩</h1>
         </div>
         <div className="infoFrame">
-          {fund2.map((v) => (
-            <Fund fund={v} />
+          {fund2.map((v, i) => (
+            <Fund indexx={i} fund={v} />
           ))}
         </div>
       </div>

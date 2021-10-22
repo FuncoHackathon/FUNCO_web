@@ -1,5 +1,5 @@
 const apiconfig = {
-  API_ENDPOINT: "http://10.80.163.231:4000",
+  API_ENDPOINT: "https://funco.loca.lt",
 };
 
 export default apiconfig;
