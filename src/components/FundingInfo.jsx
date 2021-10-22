@@ -31,7 +31,7 @@ const FundingInfo = () => {
         </div>
         <div className="infoFrame">
           {fund.map((v) => (
-            <Fund fund={v} />
+            <Fund indexx={v._id} fund={v} />
           ))}
         </div>
       </div>
